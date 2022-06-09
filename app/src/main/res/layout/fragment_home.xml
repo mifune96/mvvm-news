@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.lazday.news.ui.home.HomeViewModel" />
+
+        <variable
+            name="view"
+            type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        tools:context=".ui.home.HomeFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/custom_toolbar"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/adapter_category"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            android:clipToPadding="false"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            />
+
+        <ProgressBar
+            android:visibility="@{viewModel.loading ? view.VISIBLE : view.GONE}"
+            tools:visibility="visible"
+            android:id="@+id/progress_top"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:indeterminate="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/list_category"
+            />
+
+        <ImageView
+            android:visibility="@{viewModel.news.articles.size() > 0 || viewModel.loading ? view.GONE : view.VISIBLE}"
+            tools:visibility="visible"
+            android:id="@+id/image_alert"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/img_alert_news"
+            app:tint="@android:color/darker_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progress_top"
+            app:layout_constraintBottom_toTopOf="@+id/text_alert"
+            app:layout_constraintVertical_chainStyle="packed"
+            />
+        <TextView
+            android:visibility="@{viewModel.news.articles.size() > 0 || viewModel.loading ? view.GONE : view.VISIBLE}"
+            tools:visibility="visible"
+            android:id="@+id/text_alert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Pencarian berita tidak tersedia"
+            android:textSize="18sp"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_alert"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="HardcodedText" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_alert"
+            app:layout_constraintBottom_toTopOf="@+id/progress_bottom"
+            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:visibility="@{viewModel.news.articles.size() > 0 ? view.VISIBLE : view.GONE}"
+                tools:visibility="visible"
+                android:id="@+id/list_news"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/adapter_news"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
+                />
+        </androidx.core.widget.NestedScrollView>
+
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/progress_bottom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:indeterminate="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

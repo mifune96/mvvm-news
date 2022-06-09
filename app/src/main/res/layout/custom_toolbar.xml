@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <variable
+            name="tittle"
+            type="String" />
+
+    </data>
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="0dp"
+        app:title=""
+        >
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:maxLength="10"
+            android:text="@{tittle}"
+            tools:text="News"
+            android:textColor="@color/red_500"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_gravity="center"
+            tools:ignore="HardcodedText" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+</layout>
+

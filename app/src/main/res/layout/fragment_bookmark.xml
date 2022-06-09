@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.lazday.news.ui.bookmark.BookmarkViewModel" />
+
+        <variable
+            name="view"
+            type="android.view.View" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        tools:context=".ui.bookmark.BookmarkFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/custom_toolbar"
+            />
+
+        <ImageView
+            tools:visibility="visible"
+            android:visibility="@{viewModel.articles.size() > 0  ? view.GONE : view.VISIBLE}"
+            android:id="@+id/image_alert"
+            android:src="@drawable/img_alert_bookmark"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:tint="@android:color/darker_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintBottom_toTopOf="@+id/text_alert"
+            app:layout_constraintVertical_chainStyle="packed"
+            />
+        <TextView
+            tools:visibility="visible"
+            android:visibility="@{viewModel.articles.size() > 0  ? view.GONE : view.VISIBLE}"
+            android:id="@+id/text_alert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Belum ada berita disimpan"
+            android:textSize="18sp"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_alert"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="HardcodedText" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:visibility="@{viewModel.articles.size() > 0 ? view.VISIBLE : view.GONE}"
+            tools:visibility="gone"
+            android:id="@+id/list_bookmark"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            tools:listitem="@layout/adapter_news"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_alert"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
