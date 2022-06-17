@@ -6,12 +6,14 @@
         <entry key="app/src/main/res/drawable/ic_add.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.1766848816029144" />
+        <entry key="app/src/main/res/layout/adapter_headline.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/adapter_news.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/custom_toolbar.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/fragment_bookmark.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/menu/menu_bookmark.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/menu/menu_home.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/menu/menu_search.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/xml/network_security_config.xml" value="0.7092731829573935" />
       </map>
     </option>
